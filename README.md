@@ -1,5 +1,5 @@
 # labsEpam
-Ця гілка створена для Home Task: Basic knowledge
+This branch is created for Home Task: Basic knowledge
 
 Functions are located in src/main/java/Functions.java
 
