@@ -18,6 +18,7 @@ import pages.StartPage;
 
 public class PurchaseTest{
     private WebDriver webDriver;
+    private ConfigurationProvider config;
     private StartPage startPage;
     private HomePage homePage;
     private ProductPage productPage;
@@ -26,6 +27,7 @@ public class PurchaseTest{
     @Before
     public void setUp(){
         webDriver = WebDriverFactory.getDriver();
+        config = new ConfigurationProvider();
 
         startPage = PageFactory.initElements(webDriver, StartPage.class);
         homePage = PageFactory.initElements(webDriver, HomePage.class);
@@ -35,12 +37,12 @@ public class PurchaseTest{
 
     @Given("User connects to website")
     public void connectToSite(){
-        webDriver.get(ConfigurationProvider.url());
+        webDriver.get(config.url());
     }
 
     @When("User logs in")
     public void logIn(){
-        startPage.logIn(ConfigurationProvider.login(), ConfigurationProvider.password())
+        startPage.logIn(config.login(), config.password())
                 .waitForLogin();
     }
 
@@ -68,8 +70,7 @@ public class PurchaseTest{
 
     @When("fill in the order form:")
     public void fillOrderForm(DataTable data){
-        cartPage.waitFormAppear()
-                .enterName(data.cell(0, 0))
+        cartPage.enterName(data.cell(0, 0))
                 .enterCountry(data.cell(0, 1))
                 .enterCity(data.cell(0, 2))
                 .enterCard(data.cell(0, 3))

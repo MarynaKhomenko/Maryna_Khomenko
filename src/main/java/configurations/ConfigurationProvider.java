@@ -1,12 +1,26 @@
 package configurations;
 
+import java.io.IOException;
+import java.util.Properties;
+
 public class ConfigurationProvider {
+    private Properties properties;
 
-    public static String login() { return "Maryna"; }
-
-    public static String password(){
-        return "123456";
+    public ConfigurationProvider() {
+        try{
+            properties = new Properties();
+            properties.load(ConfigurationProvider.class.getClassLoader().getResourceAsStream("config.properties"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
-    public static String url() { return "https://www.demoblaze.com/"; }
+    public String login() { return properties.getProperty("login"); }
+
+    public String password(){
+        return properties.getProperty("password");
+    }
+
+    public String url() { return properties.getProperty("url"); }
 }
