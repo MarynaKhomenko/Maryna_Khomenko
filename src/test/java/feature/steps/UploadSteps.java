@@ -14,10 +14,6 @@ public class UploadSteps {
         uploader = new UploadRequest();
     }
 
-    @Given("^a file to upload$")
-    public void aFileToUpload() {
-    }
-
     @When("^a file is uploaded$")
     public void aFileIsUploaded() throws UnirestException {
         uploader.upload();

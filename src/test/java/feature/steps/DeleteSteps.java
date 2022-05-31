@@ -15,10 +15,6 @@ public class DeleteSteps {
         deleter = new DeleteRequest();
     }
 
-    @Given("^a file to be deleted$")
-    public void aFileToBeDeleted() {
-    }
-
     @When("^a file is deleted$")
     public void aFileIsDeleted() throws UnirestException {
         deleter.delete();

@@ -14,10 +14,6 @@ public class MetadataSteps {
         metadataReceiver = new MetadataRequest();
     }
 
-    @Given("^a file to receive the metadata of$")
-    public void aFileToReceiveTheMetadataOf() {
-    }
-
     @When("^a metadata is received$")
     public void aMetadataIsReceived() throws UnirestException {
         metadataReceiver.metadataReceive();
